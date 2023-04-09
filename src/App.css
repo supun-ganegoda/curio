@@ -1,25 +1,203 @@
-.app {
+.fact-wrapper {
+  /* to center the content inside the screen */
+  max-width: 1400px;
+  margin: 0 auto; /* auto calculate the margin push element to that side */
+}
+
+header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-}
-
-.blog-container{
-  display: block;
-  width: 100%;
-  background-color: aquamarine;
-  border: 2px;
-  border-color: black;
-  border-radius: 4px;
-  text-align: center;
-  padding: 8px;
-  margin-bottom: 10px
-}
-
-.app-button{
-  width: 90%;
   padding: 10px;
-  background-color: rgb(48, 166, 234);
+  font-family: "Alkatra", cursive;
+  margin-bottom: 10px;
+}
+
+.header-text p {
+  font-size: 0.8rem;
+}
+
+.header-text h1 {
+  margin-bottom: -10px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+body {
+  background-color: #1e293b;
+  color: #f3f4f6;
+  font-family: "Ubuntu", sans-serif;
+  padding: 20px 40px; /*horizontal and vertical*/
+}
+@media (max-width: 900px) {
+  body {
+    padding: 4px 20px;
+  }
+}
+
+.fact-container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+}
+@media (max-width: 900px) {
+  .fact-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #4b5563;
+  padding: 16px 12px;
   border-radius: 4px;
   margin-bottom: 10px;
+}
+.hidden {
+  display: none;
+}
+.form-container input,
+.form-container select {
+  border: none;
+  color: inherit;
+  background-color: #9ca3af;
+  font-family: inherit;
+  border-radius: 16px;
+  padding: 8px;
+}
+.form-container input::placeholder {
+  /* style the placeholder itself */
+  color: inherit;
+}
+.form-main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+}
+.form-main-content input {
+  flex-grow: 1;
+}
+.form-container span {
+  margin-right: 16px;
+  margin-left: 8px;
+}
+@media (max-width: 900px) {
+  .form-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+/* .fact-section {
+  display: flex;
+} */
+
+.fact {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  background-color: #4b5563;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+@media (max-width: 900px) {
+  .fact {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+  }
+  .fact p {
+    margin-right: auto;
+  }
+}
+
+.fact-category {
+  border-radius: 4px;
+  padding: 4px;
+  border-radius: 40px;
+}
+
+.vote-buttons {
+  display: flex;
+  flex-shrink: 0; /* do not allow to resize when shrinking */
+  gap: 5px;
+  margin-left: auto;
+}
+.vote-buttons button {
+  border: none;
+  padding: 9px;
+  background-color: #9ca3af;
+  border-radius: 40px;
+  color: inherit;
+  transition: 0.3s;
+}
+.vote-buttons button:hover {
+  cursor: pointer;
+  background-color: #1e293b;
+}
+
+.links {
+  /* :link usually used for apply styles to the href links */
+  color: #052150;
+  margin-left: 16px;
+  text-decoration: none;
+  transition: 0ms;
+}
+.links:hover {
+  color: rgb(113, 101, 124);
+}
+
+.btn {
+  border: none;
+  padding: 4px 0px 2px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 20px;
+  color: inherit; /* because buttons not inherit parents color defalut */
+  font-family: "Alkatra", cursive;
+  background-image: linear-gradient(45deg, #3b82f6, #16a34a, #eab308);
+  transition: 0.3s;
+}
+.btn:hover {
+  cursor: pointer;
+  transform: scale(1.1) rotate(1deg);
+}
+.btn-all {
+  width: 100%;
+  margin-bottom: 16px;
+}
+.btn-category {
+  width: 100%;
+  margin-bottom: 8px;
+  background-image: none;
+}
+.btn-large {
+  padding: 8px;
+  font-size: 18px;
+}
+.btn-post {
+  width: 20%;
+}
+@media (max-width: 900px) {
+  .btn-large {
+    font-size: 0.8rem;
+    margin-left: 0.8rem;
+    width: 9rem;
+    padding: 0.2rem;
+  }
+  .btn:hover {
+    transform: scale(1.01) rotate(0.5deg);
+  }
 }

@@ -1,4 +1,4 @@
-const CATEGORIES = [
+export const CATEGORIES = [
   { name: "technology", color: "#3b82f6" },
   { name: "science", color: "#16a34a" },
   { name: "social", color: "#ef4444" },
@@ -9,7 +9,7 @@ const CATEGORIES = [
   { name: "news", color: "#8b5cf6" },
 ];
 
-const initialFacts = [
+export const initialFacts = [
   {
     id: 1,
     text: "React is being developed by Meta (formerly facebook)",
