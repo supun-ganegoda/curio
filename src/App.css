@@ -1,4 +1,4 @@
-.fact-wrapper {
+#root {
   /* to center the content inside the screen */
   max-width: 1400px;
   margin: 0 auto; /* auto calculate the margin push element to that side */
@@ -10,7 +10,7 @@ header {
   align-items: center;
   padding: 10px;
   font-family: "Alkatra", cursive;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 .header-text p {
