@@ -59,9 +59,9 @@ body {
   border-radius: 4px;
   margin-bottom: 30px;
 }
-.hidden {
+/* .hidden {
   display: none;
-}
+} */
 .form-container input,
 .form-container select {
   border: none;

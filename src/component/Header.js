@@ -1,4 +1,8 @@
-const Header = () => {
+// import { useState } from "react";
+
+const Header = ({ displayForm, setDisplayForm }) => {
+  // const [displayForm, setDisplayForm] = useState(false);
+
   return (
     <>
       <header>
@@ -9,7 +13,12 @@ const Header = () => {
             <p>A Platform for Your Illusions</p>
           </div>
         </div>
-        <button className="btn btn-large share-btn">Share your Thoughts</button>
+        <button
+          className="btn btn-large share-btn"
+          onClick={() => setDisplayForm(!displayForm)}
+        >
+          {!displayForm ? "Share your Thoughts" : "close"}
+        </button>
       </header>
     </>
   );

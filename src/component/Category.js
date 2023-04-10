@@ -16,16 +16,14 @@ const Category = () => {
 
   return (
     <>
-      <main className="fact-container">
-        <aside>
-          <ul>
-            <li>
-              <button className="btn btn-all">All</button>
-            </li>
-            {categorySelectors}
-          </ul>
-        </aside>
-      </main>
+      <aside>
+        <ul>
+          <li>
+            <button className="btn btn-all">All</button>
+          </li>
+          {categorySelectors}
+        </ul>
+      </aside>
     </>
   );
 };
