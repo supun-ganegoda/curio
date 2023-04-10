@@ -1,12 +1,12 @@
-import { initialFacts, CATEGORIES } from "../data/BloggerData";
+import { CATEGORIES } from "../data/BloggerData";
 import VoteButtons from "./VoteButtons";
 
-const Container = () => {
-  const content = initialFacts.map((cat, pos) => {
+const Container = ({ currentContent }) => {
+  const content = currentContent.map((cat, pos) => {
     return (
       <li className="fact" key={pos}>
         <p>
-          {cat.text}
+          {cat.content}
           <a className="links" href={cat.source} target="_blank">
             [Source]
           </a>

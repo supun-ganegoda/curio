@@ -12,7 +12,7 @@ export const CATEGORIES = [
 export const initialFacts = [
   {
     id: 1,
-    text: "React is being developed by Meta (formerly facebook)",
+    content: "React is being developed by Meta (formerly facebook)",
     source: "https://opensource.fb.com/",
     category: "Technology",
     votesInteresting: 24,
@@ -22,7 +22,8 @@ export const initialFacts = [
   },
   {
     id: 2,
-    text: "Millennial dads spend 3 times as much time with their kids than their fathers spent with them. In 1982, 43% of fathers had never changed a diaper. Today, that number is down to 3%",
+    content:
+      "Millennial dads spend 3 times as much time with their kids than their fathers spent with them. In 1982, 43% of fathers had never changed a diaper. Today, that number is down to 3%",
     source:
       "https://www.mother.ly/parenting/millennial-dads-spend-more-time-with-their-kids",
     category: "Life",
@@ -33,7 +34,7 @@ export const initialFacts = [
   },
   {
     id: 3,
-    text: "Lisbon is the capital of Portugal",
+    content: "Lisbon is the capital of Portugal",
     source: "https://en.wikipedia.org/wiki/Lisbon",
     category: "History",
     votesInteresting: 8,
