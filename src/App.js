@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 import supabase from "./connector/supabase";
 import "./App.css";
 import Category from "./component/Category";
@@ -7,6 +8,7 @@ import Header from "./component/Header";
 import Container from "./component/Container";
 import Spinner from "./component/Spinner";
 import Alerts from "./component/Alerts";
+import Footer from "./component/Footer";
 
 const App = () => {
   const [displayForm, setDisplayForm] = useState(false);
@@ -38,27 +40,30 @@ const App = () => {
 
   return (
     <>
-      <Header displayForm={displayForm} setDisplayForm={setDisplayForm} />
-      {displayForm && (
-        <Form
-          currentContent={currentContent}
-          setCurrentContent={setCurrentContent}
-          setDisplayForm={setDisplayForm}
-        />
-      )}
-      <div className="fact-container">
-        <Category setSelectedCategory={setSelectedCategory} />
-        {isLoading ? (
-          <Spinner />
-        ) : loadingError ? (
-          <Alerts
-            severity={"error"}
-            message={"Something went wrong, while loading data"}
+      <Router>
+        <Header displayForm={displayForm} setDisplayForm={setDisplayForm} />
+        {displayForm && (
+          <Form
+            currentContent={currentContent}
+            setCurrentContent={setCurrentContent}
+            setDisplayForm={setDisplayForm}
           />
-        ) : (
-          <Container currentContent={currentContent} />
         )}
-      </div>
+        <div className="fact-container">
+          <Category setSelectedCategory={setSelectedCategory} />
+          {isLoading ? (
+            <Spinner />
+          ) : loadingError ? (
+            <Alerts
+              severity={"error"}
+              message={"Something went wrong, while loading data"}
+            />
+          ) : (
+            <Container currentContent={currentContent} />
+          )}
+        </div>
+        <Footer />
+      </Router>
     </>
   );
 };

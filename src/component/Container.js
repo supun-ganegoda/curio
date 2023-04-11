@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { CATEGORIES } from "../data/BloggerData";
 import VoteButtons from "./VoteButtons";
 
@@ -15,9 +16,9 @@ const Container = ({ currentContent }) => {
         <li className="fact" key={pos}>
           <p>
             {cat.content}
-            <a className="links" href={cat.source} target="_blank">
+            <Link className="links" to={cat.source} target="_blank">
               [Source]
-            </a>
+            </Link>
           </p>
           <span
             className="fact-category"
