@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Alerts from "./Alerts";
+import supabase from "../connector/supabase";
 import { CATEGORIES as categories } from "../data/BloggerData";
 
 const Form = ({ currentContent, setCurrentContent, setDisplayForm }) => {
@@ -8,6 +9,8 @@ const Form = ({ currentContent, setCurrentContent, setDisplayForm }) => {
   const [category, setCategory] = useState("");
   const [errorInput, setErrorInput] = useState(false);
   const [errorUrl, setErrorUrl] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  const [isUploadError, setIsUploadError] = useState(false);
 
   const options = categories.map((cat, pos) => {
     return (
@@ -31,26 +34,27 @@ const Form = ({ currentContent, setCurrentContent, setDisplayForm }) => {
     return !!pattern.test(str);
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     // override the default behaviour of form
     e.preventDefault();
     if (content && source && category) {
       if (validURL(source)) {
-        const newFact = {
-          id: Math.round(Math.random() * 1000),
-          content,
-          source,
-          category,
-          votesInteresting: 0,
-          votesMindblowing: 0,
-          votesFalse: 0,
-          createdIn: new Date().getFullYear,
-        };
-        setCurrentContent((currentContent) => [...currentContent, newFact]);
-        setContent("");
-        setSource("");
-        setCategory("");
-        setDisplayForm(false);
+        setIsUploading(true);
+        const { data, error } = await supabase
+          .from("Thoughts")
+          .insert([{ content, source, category }])
+          .select();
+
+        if (!error) {
+          setCurrentContent((currentContent) => [...currentContent, data[0]]);
+          setIsUploading(false);
+          setContent("");
+          setSource("");
+          setCategory("");
+          setDisplayForm(false);
+        } else {
+          setIsUploadError(true);
+        }
       } else {
         setErrorUrl(true);
       }
@@ -83,7 +87,9 @@ const Form = ({ currentContent, setCurrentContent, setDisplayForm }) => {
           <option>choose a category</option>
           {options}
         </select>
-        <button className="btn btn-post">POST</button>
+        <button className="btn btn-post" disabled={isUploading}>
+          POST
+        </button>
       </form>
       <div className="error-container">
         {errorInput ? (
@@ -94,6 +100,12 @@ const Form = ({ currentContent, setCurrentContent, setDisplayForm }) => {
         ) : null}
         {errorUrl ? (
           <Alerts severity={"warning"} message={"Please check source URL"} />
+        ) : null}
+        {isUploadError ? (
+          <Alerts
+            severity={"error"}
+            message={"Error whilie uploading the data"}
+          />
         ) : null}
       </div>
     </>
