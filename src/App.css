@@ -31,7 +31,7 @@ body {
   background-color: #111827;
   color: #f3f4f6;
   font-family: "Ubuntu", sans-serif;
-  padding: 20px 40px; /*horizontal and vertical*/
+  padding: 20px 40px 0; /*horizontal and vertical*/
 }
 @media (max-width: 900px) {
   body {
@@ -44,6 +44,7 @@ body {
   grid-template-columns: 200px 1fr;
   gap: 24px;
   margin-top: 40px;
+  height: calc(100vh - 86px);
 }
 @media (max-width: 900px) {
   .fact-container {
@@ -104,9 +105,15 @@ ul {
   list-style: none;
 }
 
-/* .fact-section {
-  display: flex;
-} */
+.fact-section {
+  overflow: scroll;
+  overflow-x: hidden;
+  /* overflow-y: hidden; */
+}
+.fact-section::-webkit-scrollbar {
+  width: 16px;
+  color: #4b5563;
+}
 
 .fact {
   display: flex;
