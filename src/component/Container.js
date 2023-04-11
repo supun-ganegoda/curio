@@ -28,7 +28,7 @@ const Container = ({ currentContent }) => {
           >
             {cat.category}
           </span>
-          <VoteButtons />
+          <VoteButtons selectedFact={cat} />
         </li>
       );
     });

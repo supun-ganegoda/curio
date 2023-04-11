@@ -152,6 +152,9 @@ ul {
   cursor: pointer;
   background-color: #1e293b;
 }
+.vote-buttons:disabled {
+  background-color: #4b5563;
+}
 
 .links {
   /* :link usually used for apply styles to the href links */
